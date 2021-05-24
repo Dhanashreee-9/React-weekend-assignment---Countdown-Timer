@@ -8,15 +8,15 @@ const App = () => {
   const inputting=(event)=>{
     setInput(event.target.value)
   
+
   }
 
     React.useEffect(() => {
       const timer =
-     Number(input > 0 &&  setInterval(() => setInput(input - 1), 1000));
-      return () => clearInterval(timer);
+     Number(input > 0) && setInterval(() => setInput(input - 1), 1000)
+     return () => clearInterval(timer)
+      
     }, [input]);
-  
-
 
 
 
@@ -24,13 +24,13 @@ const App = () => {
     <div className="wrapper">
       <div id="whole-center">
         <h1>
-          Reverse countdown for<input id="timeCount" type="number" onKeyDown={inputting} /> sec.
+          Reverse countdown for<input id="timeCount" onKeyDown={inputting} /> sec.
         </h1>
       </div>{
-        <div id="current-time">{input}</div>
+        (!Number(input)) ? "":
+         <div id="current-time">{input}</div>
       }
-
-
+     
       
     </div>
   )
