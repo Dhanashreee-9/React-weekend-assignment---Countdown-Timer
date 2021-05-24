@@ -6,15 +6,18 @@ const App = () => {
   const [input,setInput] = useState();
 
   const inputting=(event)=>{
-    
-  setInput(event.target.value)
+    setInput(event.target.value)
+  
   }
 
-  React.useEffect(() => {
-    const timer =
-      input > 0 && setInterval(() => setInput(input - 1), 1000);
-    return () => clearInterval(timer);
-  }, [input]);
+    useEffect(() => {
+      const timer =
+      input > 0 &&  setInterval(() => setInput(input - 1), 1000);
+      return () => clearInterval(timer);
+    }, [input]);
+  
+
+
 
 
   return (
@@ -24,7 +27,10 @@ const App = () => {
           Reverse countdown for<input id="timeCount" onKeyDown={inputting} /> sec.
         </h1>
       </div>
-      <div id="current-time">{input}</div>
+{
+  Number(input)? <div id="current-time">{input}</div> : "0"
+}
+      
     </div>
   )
 }
