@@ -10,7 +10,7 @@ const App = () => {
   
   }
 
-    useEffect(() => {
+    React.useEffect(() => {
       const timer =
       input > 0 &&  setInterval(() => setInput(input - 1), 1000);
       return () => clearInterval(timer);
