@@ -13,7 +13,7 @@ const App = () => {
 
     React.useEffect(() => {
       const timer =
-     Number(input > 0) && setInterval(() => setInput(input - 1), 1000)
+     Number(input > 0 && setInterval(() => setInput(input - 1), 1000))
      return () => clearInterval(timer)
       
     }, [input]);
@@ -26,12 +26,8 @@ const App = () => {
         <h1>
           Reverse countdown for<input id="timeCount" onKeyDown={inputting} /> sec.
         </h1>
-      </div>{
-        (!Number(input)) ? "":
+      </div>
          <div id="current-time">{input}</div>
-      }
-     
-      
     </div>
   )
 }
