@@ -3,7 +3,7 @@ import '../styles/App.css';
 
 const App = () => {
   // write your code here 
-  const [input,setInput] = useState(0);
+  const [input,setInput] = useState();
 
   const inputting=(event)=>{
     setInput(event.target.value)
@@ -20,18 +20,17 @@ const App = () => {
     useEffect(()=>{
 
       let x = setInterval(()=>{
-      
         setInput(input-1);
-      
-        if(input == '0' || input == "" || input<=0 || isNaN(input)){
-      
-        
-      setInput(0)
-        }
-        
-      },1000);
+       },1000);
       return()=> clearInterval(x);
       },[input]);
+
+      useEffect(() => {
+        if(input == '0' || input == "" || input<=0 || isNaN(input)){
+          setInput(0)
+        }
+        
+      }, [input])
 
   return (
     <div className="wrapper">
