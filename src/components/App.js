@@ -7,16 +7,31 @@ const App = () => {
 
   const inputting=(event)=>{
     setInput(event.target.value)
+
   }
   
-    React.useEffect(() => {
+    // React.useEffect(() => {
 
-      const timer =
-      Number(input > 0 && setInterval(() => setInput(input - 1), 1000))
-       return () => clearInterval(timer)
-      }, [input]);
+    //   const timer =
+    //   Number(input > 0 && setInterval(() => setInput(input - 1), 1000))
+    //    return () => clearInterval(timer)
+    //   }, [input]);
 
+    useEffect(()=>{
 
+      let x = setInterval(()=>{
+      
+        setInput(input-1);
+      
+        if(input == '0' || input == "" || input<=0 || isNaN(input)){
+      
+        
+      setInput(0)
+        }
+        
+      },1000);
+      return()=> clearInterval(x);
+      },[input]);
 
   return (
     <div className="wrapper">
@@ -24,9 +39,9 @@ const App = () => {
         <h1>
           Reverse countdown for<input id="timeCount" onKeyDown={inputting} /> sec.
         </h1>
-      </div>{
-        input == '0' || input == "" || input<=0 || isNaN(input) ? "0" :  <div id="current-time">{input}</div>
-      }
+      </div>
+           <div id="current-time">{input}</div>
+      
         
     </div>
   )
